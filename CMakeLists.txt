@@ -32,13 +32,12 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.1
 
 add_executable(${PROJECT_NAME} 
-    dist_card.c 
+    sd_card.c 
     hw_config.c 
-    servo.c 
-    vl53l0x.c
     inc/ssd1306.c
     inc/ssd1306_fonts.c
     inc/ssd1306_bitmaps.c
+ 
     )
 add_subdirectory(lib/FatFs_SPI)  
 
@@ -60,12 +59,15 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(${PROJECT_NAME}
+     
         hardware_i2c
         hardware_pwm
         FatFs_SPI
         hardware_clocks
         hardware_adc
+      
         )
 
 pico_add_extra_outputs(${PROJECT_NAME})
 
+     
